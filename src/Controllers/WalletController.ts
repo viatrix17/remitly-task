@@ -32,7 +32,7 @@ export class WalletController {
     }
 
     // GET /wallet/:wallet_id/stocks/:stock_name
-    static async getStocksQuantity(req: Request, res: Response) {
+    static async getStockQuantity(req: Request, res: Response) {
         const wallet_id = req.params.wallet_id as string;
         const stock_name = req.params.stock_name as string;
         try {

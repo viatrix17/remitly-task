@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import { AuditLogService } from "../Services/AuditLogService";
 
-export class AuditLogController {
+export class SystemController {
     // GET /log
     static async getLogs(req: Request, res: Response) {
         try {
