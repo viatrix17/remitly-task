@@ -4,7 +4,7 @@ A scalable stock management application designed as an internship task (2026) fo
 
 ## Features
 - **High Availability**: load balancing between multiple app instances
-- **Persistence**: data is stored in PostgresSQL database with volume support
+- **Persistence**: data is stored in PostgresSQL database 
 - **Self-Healing**: automated container recovery policy via Docker
 - **Idempotency**: utilizes SQL `UPSERT` operations to ensure data consistency across multiple identical requests
 

@@ -1,14 +1,14 @@
 import { Request, Response } from 'express';
 import { AuditLogService } from "../Services/AuditLogService";
+import { AuditLogResponse } from '../Models/AuditLog';
 
 export class SystemController {
     // GET /log
     static async getLogs(req: Request, res: Response) {
         try {
             const logs = await AuditLogService.getLogs();
-            res.status(200).json({ 
-                log: logs 
-            });
+            const response: AuditLogResponse = { log: logs };
+            res.status(200).json(response);
         } catch (error: any) {
             res.status(500).json({ error: error.message });
         }

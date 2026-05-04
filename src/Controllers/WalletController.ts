@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import { WalletService } from "../Services/WalletService";
+import { WalletResponse } from "../Models/Wallet";
 
 export class WalletController {
     // POST /wallet/:wallet_id/stocks/:stock_name
@@ -7,7 +8,7 @@ export class WalletController {
 
         const wallet_id = req.params.wallet_id as string;
         const stock_name = req.params.stock_name as string;
-        const { type } = req.body;
+        const { type }: { type: 'buy' | 'sell' } = req.body;
 
         try {
             await WalletService.manageTrade(wallet_id, stock_name, type);
@@ -22,10 +23,11 @@ export class WalletController {
         const wallet_id = req.params.wallet_id as string;
         try {
             const stocks = await WalletService.getWallet(wallet_id);
-            res.status(200).json({
+            const response: WalletResponse = {
                 id: wallet_id,
                 stocks: stocks
-            });
+            };
+            res.status(200).json(response);
         } catch (error: any) {
             res.status(500).json({ error: error.message });
         }
