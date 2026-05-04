@@ -1,7 +1,7 @@
 import app from './app';
 import { checkConnection } from './Infrastructure/db';
 
-const PORT = process.env.PORT || 5617;
+const PORT = process.env.PORT || 3000;
 
 const start = async () => {
     try {
@@ -15,7 +15,5 @@ const start = async () => {
         process.exit(1);
     }
 };
-
-
 
 start();
