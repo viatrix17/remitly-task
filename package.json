@@ -2,10 +2,10 @@
   "name": "remitly-task",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "build": "tsc",
-    "start": "node dist/index.js",
+    "start": "node dist/server.js",
     "docker:start": "docker-compose up --build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/viatrix17/remitly-task#readme",
   "dependencies": {
+    "cors": "^2.8.6",
     "dotenv": "^17.4.2",
     "express": "^5.2.1",
     "pg": "^8.20.0"
