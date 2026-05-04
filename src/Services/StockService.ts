@@ -14,11 +14,14 @@ export class StockService {
             await client.query('BEGIN');
 
             for (const stock of stocks) {
-            await client.query(
-                'INSERT INTO stocks (stock_name, quantity) VALUES ($1, $2)',
-                [stock.name, stock.quantity]
-            );
-        }
+                await client.query(
+                    `INSERT INTO stocks (stock_name, quantity) 
+                    VALUES ($1, $2) 
+                    ON CONFLICT (stock_name) 
+                    DO UPDATE SET quantity = EXCLUDED.quantity`,
+                    [stock.name, stock.quantity]
+                );
+            }
             await client.query('COMMIT');
         } catch (error) {
             await client.query('ROLLBACK');
